@@ -1,12 +1,12 @@
-#wizFlex {
+.wizFlex {
     display: flex;
     flex-direction: column;
-    width: 50vw;
-    background-color: lightseagreen;
+    width: 60vw;
+    background-color: #DEDEDE;
     border-radius: 15px;
     border: 3px solid white;
     margin: 15px;
-    height: 40vh;
+    height: 35vh;
     padding: 10px;
 }
 
@@ -20,15 +20,41 @@
 .wizardParent {
     display: flex;
     justify-content: center;
+    background-color: #AFD4C0;
+    width: 60vw;
+    border-radius: 15px;
 }
 
 .wizardButton {
     margin-top: 10px;
     background-color: white;
-    color: darkcyan;
+    color: black;
     width: 120px;
     height: 40px;
     border-radius: 15px;
     font-size: 20px;
     font-weight: 700;
+}
+
+.headerCancel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+    padding-bottom: 15px;
+    color: black;
+}
+
+.wizContain {
+    display: flex;
+    justify-content: center;
+}
+
+.buttonBox {
+    display: flex;
+    justify-content: space-evenly;
 }

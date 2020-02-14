@@ -1,17 +1,17 @@
 #houseName {
     font-size: 30px;
-    color: white;
+    color: black;
 }
 
 .houseFlex {
     display: flex;
     flex-direction: column;
     width: 55vw;
-    background-color: lightseagreen;
+    background-color: #DEDEDE;
     border-radius: 15px;
     border: 3px solid white;
     margin: 10px;
-    height: 45vh;
+    height: 55vh;
     padding: 10px;
     justify-content: center;
     align-items: center;
@@ -25,7 +25,7 @@
 #houseButton {
     margin-top: 10px;
     background-color: white;
-    color: darkcyan;
+    color: black;
     width: 100px;
     height: 40px;
     border-radius: 15px;

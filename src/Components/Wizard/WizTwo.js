@@ -1,17 +1,28 @@
 import React, { Component } from "react";
 import "./Wizard.css";
-import {Link} from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import store, { UPDATE_IMAGEURL } from "../../store";
 
 class WizTwo extends Component {
   constructor() {
     super();
 
+    const reduxState = store.getState();
+
     this.state = {
-      image_url: ""
+      image_url: reduxState.image_url
     };
 
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    store.subscribe(() => {
+      let newState = store.getState();
+      this.setState({
+        image_url: newState.image_url
+      });
+    });
   }
 
   handleChange(e) {
@@ -21,10 +32,18 @@ class WizTwo extends Component {
     });
   }
 
+  nextAndUpdate = () => {
+    const action = {
+      type: UPDATE_IMAGEURL,
+      payload: this.state.image_url
+    };
+    store.dispatch(action);
+  };
+
   render() {
     return (
       <div className="wizardParent">
-        <div id="wizFlex">
+        <div className="wizFlex">
           <input
             type="text"
             className="wizardInput"
@@ -33,11 +52,18 @@ class WizTwo extends Component {
             name="image_url"
             onChange={this.handleChange}
           ></input>
-             <Link to="/wizard/step3" className="subnav_links">
-            <button className="wizardButton">
-              Next Step
-            </button>
-          </Link>
+          <div className="buttonBox">
+            <Link to="/wizard/step1" className="subnav_links">
+              <button onClick={this.nextAndUpdate} className="wizardButton">
+                Previous
+              </button>
+            </Link>
+            <Link to="/wizard/step3" className="subnav_links">
+              <button onClick={this.nextAndUpdate} className="wizardButton">
+                Next Step
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     );

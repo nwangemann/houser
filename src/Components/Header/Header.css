@@ -1,0 +1,16 @@
+#header {
+    height: 10vh;
+    position: sticky;
+    background-color: #519872;
+    color: white;
+    font-size: 35px;
+    font-weight: 700;
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#headerText {
+    font-size: 20px;
+}

@@ -1,21 +1,41 @@
 import React, { Component } from "react";
 import "./Wizard.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import store, {
+  UPDATE_NAME,
+  UPDATE_ADDRESS,
+  UPDATE_CITY,
+  UPDATE_ZIPCODE,
+  UPDATE_STATE
+} from "../../store";
 
 class WizOne extends Component {
   constructor() {
     super();
 
+    const reduxState = store.getState();
+
     this.state = {
-      name: "",
-      address: "",
-      city: "",
-      state: "",
-      zipcode: ""
+      name: reduxState.name,
+      address: reduxState.address,
+      city: reduxState.city,
+      state: reduxState.state,
+      zipcode: reduxState.zipcode
     };
 
     this.handleChange = this.handleChange.bind(this);
+  }
+  componentDidMount() {
+    store.subscribe(() => {
+      let newState = store.getState();
+      this.setState({
+        name: newState.name,
+        address: newState.address,
+        city: newState.city,
+        state: newState.state,
+        zipcode: newState.zipcode
+      });
+    });
   }
 
   handleChange(e) {
@@ -25,10 +45,38 @@ class WizOne extends Component {
     });
   }
 
+  nextAndUpdate = () => {
+    const nameAction = {
+      type: UPDATE_NAME,
+      payload: this.state.name
+    };
+    const addressAction = {
+      type: UPDATE_ADDRESS,
+      payload: this.state.address
+    };
+    const cityAction = {
+      type: UPDATE_CITY,
+      payload: this.state.city
+    };
+    const stateAction = {
+      type: UPDATE_STATE,
+      payload: this.state.state
+    };
+    const zipcodeAction = {
+      type: UPDATE_ZIPCODE,
+      payload: this.state.zipcode
+    };
+    store.dispatch(nameAction);
+    store.dispatch(addressAction);
+    store.dispatch(cityAction);
+    store.dispatch(stateAction);
+    store.dispatch(zipcodeAction);
+  };
+
   render() {
     return (
       <div className="wizardParent">
-        <div id="wizFlex">
+          <div className="wizFlex">
           <input
             type="text"
             className="wizardInput"
@@ -69,13 +117,15 @@ class WizOne extends Component {
             name="zipcode"
             onChange={this.handleChange}
           ></input>
-           <Link to="/wizard/step2" className="subnav_links">
-            <button className="wizardButton">
+                <div className="buttonBox">
+          <Link to="/wizard/step2" className="subnav_links">
+            <button onClick={this.nextAndUpdate} className="wizardButton">
               Next Step
             </button>
           </Link>
+          </div>
+          </div>
         </div>
-      </div>
     );
   }
 }

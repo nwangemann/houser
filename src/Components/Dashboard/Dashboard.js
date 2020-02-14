@@ -41,19 +41,21 @@ class Dashboard extends Component {
 
   render() {
     const houseList = this.state.houses.map(house => {
+      console.log(house)
       return <div key={house.id}>
           <House deleteHouse={this.deleteHouse} value={house.id} house={house} />
         </div>
     })
-    return <div className="Dashboard">
-        Dashboard
+    return <div className="dashParent">
+    <div className="Dashboard">
+      <div className="dashFlex">
+        <h1>Dashboard</h1>
         <Link to="/wizard/step1" className="subnav_links">        
         <button>Add New Property</button>
         </Link>
+        </div>
         {houseList}
-        <Link to="/wizard/step1" className="subnav_links">        
-        <button>Add New Property</button>
-        </Link>
+    </div>
     </div>;
   }
 }

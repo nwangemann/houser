@@ -1,0 +1,22 @@
+.Dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 65vw;
+    background-color: #E5F4EC;
+}
+
+.dashFlex {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 15px;
+    align-items: center;
+    border-bottom: 3px solid black;
+    width: 55vw;
+}
+
+.dashParent {
+    display: flex;
+    justify-content: center;
+}
