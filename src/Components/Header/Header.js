@@ -4,7 +4,7 @@ import "./Header.css";
 function Header() {
 
     return <div id="header">
-        <p>֍🏠֍</p>
+        <p>֍</p>
         <h1 id='headerText'>Houser</h1>
     </div>;
 }

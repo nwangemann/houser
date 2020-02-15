@@ -33,6 +33,9 @@ class WizThree extends Component {
       });
     });
   }
+  componentWillUnmount(){
+    store.dispatch({ type: CANCEL_ALL });
+  }
 
   handleChange(e) {
     const { name, value } = e.target;
@@ -55,6 +58,7 @@ class WizThree extends Component {
   };
 
   addHouse = () => {
+      this.nextAndUpdate()
     const {
       name,
       address,
@@ -82,7 +86,6 @@ class WizThree extends Component {
         "Not sure if it is necessary to do anything here... maybe revisit this later"
       );
     });
-    store.dispatch({ type: CANCEL_ALL });
   };
 
   render() {
