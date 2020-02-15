@@ -17,8 +17,8 @@ class WizThree extends Component {
       state: reduxState.state,
       zipcode: reduxState.zipcode,
       image_url: reduxState.image_url,
-      mortgage: "",
-      rent: ""
+      mortgage: reduxState.mortgage,
+      rent: reduxState.rent
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -44,7 +44,7 @@ class WizThree extends Component {
     });
   }
 
-  nextAndUpdate = () => {
+  continueAndUpdate = () => {
     const mortgageAction = {
       type: UPDATE_MORTGAGE,
       payload: this.state.mortgage
@@ -58,7 +58,7 @@ class WizThree extends Component {
   };
 
   addHouse = () => {
-      this.nextAndUpdate()
+    this.continueAndUpdate()
     const {
       name,
       address,
@@ -82,9 +82,8 @@ class WizThree extends Component {
     };
 
     axios.post("/api/newhouse", houseToAdd).then(res => {
-      console.log(
-        "Not sure if it is necessary to do anything here... maybe revisit this later"
-      );
+      console.log('this ran')
+    
     });
   };
 
@@ -110,7 +109,7 @@ class WizThree extends Component {
           ></input>
                 <div className="buttonBox">
           <Link to="/wizard/step2" className="subnav_links">
-            <button onClick={this.nextAndUpdate} className="wizardButton">
+            <button onClick={this.continueAndUpdate} className="wizardButton">
               Previous
             </button>
           </Link>

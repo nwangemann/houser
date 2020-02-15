@@ -32,7 +32,7 @@ class WizTwo extends Component {
     });
   }
 
-  nextAndUpdate = () => {
+  advanceAndUpdate = () => {
     const action = {
       type: UPDATE_IMAGEURL,
       payload: this.state.image_url
@@ -54,12 +54,12 @@ class WizTwo extends Component {
           ></input>
           <div className="buttonBox">
             <Link to="/wizard/step1" className="subnav_links">
-              <button onClick={this.nextAndUpdate} className="wizardButton">
+              <button onClick={this.advanceAndUpdate} className="wizardButton">
                 Previous
               </button>
             </Link>
             <Link to="/wizard/step3" className="subnav_links">
-              <button onClick={this.nextAndUpdate} className="wizardButton">
+              <button onClick={this.advanceAndUpdate} className="wizardButton">
                 Next Step
               </button>
             </Link>
